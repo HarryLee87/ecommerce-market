@@ -1,0 +1,76 @@
+# CI/CD Workflow for Ecommerce Market
+
+## Overview
+This document describes the Continuous Integration and Continuous Deployment (CI/CD) process implemented using GitHub Actions for the Ecommerce Market project. The workflow is designed to enforce code quality standards, run tests, build the application, and deploy it to the production environment upon merge to the `main` branch.
+
+## Workflow Steps
+- **Linting**: Runs ESLint to check for JavaScript and React code style issues.
+- **Prettier Check**: Verifies that the code is formatted according to Prettier's rules.
+- **Build**: Compiles the Next.js application to generate production-ready output.
+- **Test**: (If applicable) Runs the test suite to ensure that all tests pass.
+- **Deploy**: (If applicable) Deploys the application to the specified production environment.
+
+## Files Structure
+- `.github/workflows/ci.yml`: The main workflow configuration file for GitHub Actions.
+- `.github/README.md`: Documentation for the workflows (this file).
+
+## Usage
+To trigger the workflow, push your changes to the feature branch and create a pull request against the `main` branch. The workflow will automatically run the checks defined in `ci.yml`.
+
+## Contributions
+To modify the workflow:
+1. Create a new feature branch.
+2. Make changes to the `.github/workflows/ci.yml` file.
+3. Update the documentation to reflect any changes.
+4. Create a pull request against the `main` branch.
+
+Please ensure that all your commits follow our commit message conventions and that your pull request passes all the checks before requesting a review.
+
+## Additional Information
+- For more details on GitHub Actions, visit [GitHub Actions Documentation](https://docs.github.com/en/actions).
+- For help with ESLint, see [ESLint User Guide](https://eslint.org/docs/user-guide/).
+- For Prettier, refer to [Prettier Documentation](https://prettier.io/docs/en/index.html).
+
+Thank you for contributing to the Ecommerce Market project!
+
+
+## Workflow Setup and Installation
+
+To set up the CI/CD workflow for the Ecommerce Market project, the following steps were taken:
+
+1. **Create Workflow Configuration**:
+   - A new file named `ci.yml` was created in the `.github/workflows` directory.
+   - The `ci.yml` file was configured to trigger on push and pull request events to the `main` branch.
+
+2. **Configure Node.js Environment**:
+   - The GitHub Actions workflow was configured to use the `actions/setup-node@v1` action to set up the Node.js environment with the specific version required by the project.
+
+3. **Dependency Installation**:
+   - A step was added to run `npm install` to install all necessary dependencies for the project.
+
+4. **Code Quality Checks**:
+   - ESLint and Prettier checks were integrated into the workflow.
+   - `npm run lint` was used for ESLint to identify and fix linting issues.
+   - `npx prettier --check .` was used for Prettier to ensure code format consistency.
+
+5. **Project Build**:
+   - The `npm run build` command was added to compile the Next.js application and generate production-ready output.
+
+6. **(Optional) Testing**:
+   - If the project includes tests, a step to execute these tests was added using the `npm test` command.
+
+7. **(Optional) Deployment**:
+   - For projects requiring deployment, additional steps were included to deploy the application to the production environment after a successful build and test process.
+
+8. **Husky and Lint-Staged Integration**:
+   - Husky was installed to manage Git hooks.
+   - Lint-staged was set up to run ESLint and Prettier on pre-commit.
+
+9. **Documentation**:
+   - The `README.md` file in the `.github` directory was created to document the purpose and usage of the CI/CD workflow.
+
+Each of these steps contributes to automating the build and deployment process, ensuring that every change is tested and meets quality standards before being merged into the `main` branch.
+
+To replicate this setup, clone the repository, navigate to the `.github` directory, and review the `ci.yml` file to understand the workflow's configuration. Make sure to install the same versions of Node.js, ESLint, and Prettier as specified in the `package.json` file.
+
+For detailed instructions on how to work with GitHub Actions and workflows, refer to the [GitHub Actions Documentation](https://docs.github.com/en/actions).
